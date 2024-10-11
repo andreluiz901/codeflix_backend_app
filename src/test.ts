@@ -1,3 +1,3 @@
-class test {
+class Test {
   private a = 'a'
 }
