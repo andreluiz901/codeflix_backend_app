@@ -13,7 +13,7 @@
 	"service": "app",
 	// The optional 'workspaceFolder' property is the path VS Code should open by default when
 	// connected. This is typically a file mount in .devcontainer/docker-compose.yml
-	"workspaceFolder": "/home/node/app"
+	"workspaceFolder": "/home/node/app",
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
@@ -28,4 +28,10 @@
 	// "customizations": {},
 	// Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "devcontainer"
+	"mounts": [
+		"source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,consistency=cached"
+	],
+	"remoteEnv": {
+		"SSH_AUTH_SOCK": "/run/host-services/ssh-auth.sock"
+	}
 }

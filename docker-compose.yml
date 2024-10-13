@@ -6,3 +6,5 @@ services:
     container_name: codeflix-videos-app
     volumes:
       - .:/home/node/app
+      - ~/.ssh:/root/.ssh
+      - /run/host-services/ssh-auth.sock:/run/host-services/ssh-auth.sock
