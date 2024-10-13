@@ -6,6 +6,7 @@
 	// The .devcontainer/docker-compose.yml file contains any overrides you need/want to make.
 	"dockerComposeFile": [
 		"../docker-compose.yml",
+		"../docker-compose.override.yml",
 		"docker-compose.yml"
 	],
 	// The 'service' property is the name of the service for the container that VS Code should
@@ -33,5 +34,8 @@
 	],
 	"remoteEnv": {
 		"SSH_AUTH_SOCK": "/run/host-services/ssh-auth.sock"
+	},
+	"settings": {
+		"terminal.integrated.defaultProfile.linux": "zsh"
 	}
 }

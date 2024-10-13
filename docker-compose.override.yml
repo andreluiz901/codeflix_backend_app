@@ -1,0 +1,6 @@
+services:
+  app:
+    build: .
+    container_name: codeflix-videos-app
+    volumes:
+      - ./.docker/zsh/powerlevel10k/.p10k.zsh:/home/node/.p10k.zsh:delegated
