@@ -83,9 +83,12 @@ describe('Category Unit Tests', () => {
 
   })
 
-  test('getter of name field', () => {
+  test('getter and setter of name prop', () => {
     const category = new Category({ name: 'Movie' })
     expect(category.name).toBe('Movie')
+
+    category['name'] = 'other name'
+    expect(category.name).toBe('other name')
   })
 
   test('getter and setter of description field', () => {
@@ -124,5 +127,24 @@ describe('Category Unit Tests', () => {
     let createdAt = new Date()
     category = new Category({ name: 'Movie', createdAt })
     expect(category.createdAt).toBe(createdAt)
+  })
+
+  it('should update a category', () => {
+    const category = new Category({ name: 'Movie' })
+    category.update('Documentary', 'some description')
+    expect(category.name).toBe('Documentary')
+    expect(category.description).toBe('some description')
+  })
+
+  it('should enable a category', () => {
+    const category = new Category({ name: 'Movie', isActive: false })
+    category.activate()
+    expect(category.isActive).toBeTruthy()
+  })
+
+  it('should disable a category', () => {
+    const category = new Category({ name: 'Movie', isActive: true })
+    category.deactivate()
+    expect(category.isActive).toBeFalsy()
   })
 })
