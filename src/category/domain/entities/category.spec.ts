@@ -4,14 +4,14 @@ import { omit } from "lodash"
 
 describe('Category Unit Tests', () => {
 
+  beforeEach(() => {
+    Category.validate = jest.fn()
+  })
   test('Constructor of Category', () => {
-
-    let category = new Category({
-      name: 'Movie',
-    })
-
+    let category = new Category({ name: 'Movie', })
     let props = omit(category.props, 'createdAt')
 
+    expect(Category.validate).toHaveBeenCalled()
     expect(props).toStrictEqual({
       name: 'Movie',
       description: null,
@@ -33,7 +33,6 @@ describe('Category Unit Tests', () => {
       createdAt
     })
 
-
     category = new Category({
       name: 'Movie',
       description: 'other description',
@@ -43,7 +42,6 @@ describe('Category Unit Tests', () => {
       description: 'other description',
     })
 
-
     category = new Category({
       name: 'Movie',
       isActive: true,
@@ -52,7 +50,6 @@ describe('Category Unit Tests', () => {
       name: 'Movie',
       isActive: true,
     })
-
 
     createdAt = new Date()
     category = new Category({
@@ -132,6 +129,7 @@ describe('Category Unit Tests', () => {
   it('should update a category', () => {
     const category = new Category({ name: 'Movie' })
     category.update('Documentary', 'some description')
+    expect(Category.validate).toHaveBeenCalledTimes(2)
     expect(category.name).toBe('Documentary')
     expect(category.description).toBe('some description')
   })
