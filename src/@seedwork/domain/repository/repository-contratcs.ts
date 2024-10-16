@@ -19,14 +19,14 @@ export type SearchProps<Filter = string> = {
   filter?: Filter | null
 }
 
-export class SearchParams {
+export class SearchParams<Filter = string> {
   protected _page: number
   protected _perPage: number = 15
   protected _sort: string | null
   protected _sortDir: SortDirection | null
-  protected _filter: string | null
+  protected _filter: Filter | null
 
-  constructor(props: SearchProps = {}) {
+  constructor(props: SearchProps<Filter> = {}) {
     this.page = props.page
     this.perPage = props.perPage
     this.sort = props.sort
@@ -87,15 +87,15 @@ export class SearchParams {
     this._sortDir = dir !== 'asc' && dir !== 'desc' ? 'asc' : dir
   }
 
-  get filter(): string | null {
+  get filter(): Filter | null {
     return this._filter
   }
 
-  private set filter(value: string | null) {
+  private set filter(value: Filter | null) {
     this._filter =
-      value === null || value === undefined || value === ""
+      value === null || value === undefined || (value as unknown) === ""
         ? null
-        : `${value}`
+        : (`${value}` as any)
   }
 }
 
