@@ -32,7 +32,23 @@ describe('UpdateCategoryUseCase Unit Test', () => {
       createdAt: entity.createdAt
     })
 
-    const arrange: any = [
+    type Arrange = {
+      input: {
+        id: string;
+        name: string;
+        description?: null | string;
+        isActive?: boolean
+      };
+      expected: {
+        id: string;
+        name: string;
+        description: string | null;
+        isActive: boolean;
+        createdAt: Date;
+      };
+    }
+
+    const arrange: Arrange[] = [
       {
         input: { id: entity.id, name: 'test', description: 'some description' },
         expected: {

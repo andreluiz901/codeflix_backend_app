@@ -13,8 +13,8 @@ export type CategoryProperties = {
 export class Category extends Entity<CategoryProperties> {
 
   constructor(public readonly props: CategoryProperties, id?: UniqueEntityId) {
-    Category.validate(props)
     super(props, id)
+    Category.validate(props)
     this.description = this.props.description;
     this.props.isActive = this.props.isActive ?? true;
     this.props.createdAt = this.props.createdAt ?? new Date();
@@ -33,12 +33,6 @@ export class Category extends Entity<CategoryProperties> {
       throw new EntityValidationError(validator.errors)
     }
   }
-
-  // static validate(props: Omit<CategoryProperties, 'createdAt'>) {
-  //   ValidatorRules.values(props.name, 'name').required().string().maxLength(255)
-  //   ValidatorRules.values(props.description, 'description').string()
-  //   ValidatorRules.values(props.isActive, 'isActive').boolean()
-  // }
 
   activate() {
     this.props.isActive = true
