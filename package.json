@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "admin video catalogue",
   "main": "index.js",
+  "imports": {
+    "#seedwork/*": "./dist/@seedwork/*.js",
+    "#category/*": "./dist/category/*.js"
+  },
   "scripts": {
     "ts-node": "ts-node",
     "tsc": "tsc",
@@ -11,7 +15,9 @@
     "test": "jest",
     "test:watch": "jest --watchAll",
     "test:cov": "npm run test -- --coverage",
-    "test:inBand": "npm run test -- --runInBand"
+    "test:inBand": "npm run test -- --runInBand",
+    "cti": "cti",
+    "cti:@core": "sh ./cti.sh"
   },
   "keywords": [],
   "author": "André Luiz",
@@ -22,6 +28,7 @@
     "@types/jest": "^29.5.13",
     "@types/lodash": "^4.17.10",
     "@types/node": "^22.7.5",
+    "create-ts-index": "^1.14.0",
     "jest": "^29.7.0",
     "lodash": "^4.17.21",
     "ts-node": "^10.9.2",
