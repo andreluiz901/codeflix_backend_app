@@ -2,7 +2,10 @@ services:
   app:
     build: .
     container_name: codeflix-videos-app
+    command: sh -c .docker/start.sh
     volumes:
       - .:/home/node/app
       - ~/.ssh:/root/.ssh
       - /run/host-services/ssh-auth.sock:/run/host-services/ssh-auth.sock
+    ports:
+      - 3000:3000

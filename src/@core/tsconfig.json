@@ -1,0 +1,23 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "esModuleInterop": true,
+    "strict": true,
+    "paths": {
+      "#seedwork/*": [
+        "./@seedwork/*"
+      ],
+      "#category/*": [
+        "./category/*"
+      ],
+      "@/*": [
+        "./*"
+      ]
+    },
+    "outDir": "./dist"
+  },
+  "include": [
+    "src/"
+  ]
+}

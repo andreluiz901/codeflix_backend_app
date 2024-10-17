@@ -1,0 +1,72 @@
+{
+  "name": "codeflix-backend-app",
+  "version": "1.0.0",
+  "description": "admin video catalogue",
+  "main": "index.js",
+  "imports": {
+    "#seedwork/*": "./dist/@seedwork/*.js",
+    "#category/*": "./dist/category/*.js"
+  },
+  "exports": {
+    "./@seedwork/application": "./dist/@seedwork/application/index.js",
+    "./@seedwork/domain": "./dist/@seedwork/domain/index.js",
+    "./category/domain": "./dist/category/domain/index.js",
+    "./category/application": "./dist/category/application/index.js",
+    "./category/infra": "./dist/category/infra/index.js"
+  },
+  "typesVersions": {
+    ">=4.0": {
+      "@seedwork/application": [
+        "./dist/@seedwork/application/index.d.ts"
+      ],
+      "@seedwork/domain": [
+        "./dist/@seedwork/domain/index.d.ts"
+      ],
+      "@seedwork/infra": [
+        "./dist/@seedwork/infra/index.d.ts"
+      ],
+      "category/application": [
+        "./dist/category/application/index.d.ts"
+      ],
+      "category/domain": [
+        "./dist/category/domain/index.d.ts"
+      ],
+      "category/infra": [
+        "./dist/category/infra/index.d.ts"
+      ]
+    }
+  },
+  "scripts": {
+    "ts-node": "ts-node",
+    "tsc": "tsc",
+    "tsc:check": "npm run tsc -- --noEmit",
+    "clean:tsc": "rm tsconfig.tsbuildinfo",
+    "build": "tsc -b ./tsconfig.json",
+    "build:w": "tsc -b ./tsconfig.json -w",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "test:cov": "npm run test -- --coverage",
+    "test:inBand": "npm run test -- --runInBand",
+    "cti": "cti",
+    "cti:@core": "sh ./cti.sh"
+  },
+  "keywords": [],
+  "author": "André Luiz",
+  "license": "ISC",
+  "devDependencies": {
+    "@swc/core": "^1.7.35",
+    "@swc/jest": "^0.2.36",
+    "@types/jest": "^29.5.13",
+    "@types/lodash": "^4.17.10",
+    "create-ts-index": "^1.14.0",
+    "jest": "^29.7.0",
+    "lodash": "^4.17.21",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "@types/uuid": "^10.0.0",
+    "class-validator": "^0.14.1",
+    "uuid": "^10.0.0"
+  }
+}

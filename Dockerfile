@@ -7,7 +7,10 @@ RUN apt update && apt install -y --no-install-recommends \
   zsh \
   curl \
   wget \
-  fonts-powerline
+  fonts-powerline \
+  procps 
+
+RUN npm install -g @nestjs/cli@10.4.5 npm@10.8.2
 
 USER node
 
@@ -23,7 +26,7 @@ RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/
 RUN echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >> ~/.zshrc && \
   echo 'HISTFILE=/home/node/zsh/.zsh_history' >> ~/.zshrc 
 
-
 WORKDIR /home/node/app
 
-CMD ["sh", "-c", "npm install && tail -f /dev/null"]
+CMD ["tail", "-f", "/dev/null"]
+#CMD ["sh", "-c", ".docker/start.sh"]

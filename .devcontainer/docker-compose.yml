@@ -14,7 +14,6 @@ services:
     volumes:
       # Update this to wherever you want VS Code to mount the folder of your project
       - .:/home/node/app:cached
-
     # Uncomment the next four lines if you will use a ptrace-based debugger like C++, Go, and Rust.
     # cap_add:
     #   - SYS_PTRACE
@@ -22,5 +21,5 @@ services:
     #   - seccomp:unconfined
 
     # Overrides default command so things don't shut down after the process ends.
-    command: sleep infinity
- 
+    #command: sleep infinity
+    #command: sh -c .docker/start.sh
