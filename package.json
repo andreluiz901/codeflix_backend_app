@@ -10,7 +10,8 @@
     "clean:tsc": "rm tsconfig.tsbuildinfo",
     "test": "jest",
     "test:watch": "jest --watchAll",
-    "test:cov": "npm run test -- --coverage"
+    "test:cov": "npm run test -- --coverage",
+    "test:inBand": "npm run test -- --runInBand"
   },
   "keywords": [],
   "author": "André Luiz",
