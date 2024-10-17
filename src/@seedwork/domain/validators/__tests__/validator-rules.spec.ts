@@ -1,5 +1,5 @@
-import { ValidationError } from "../../errors/validation-error"
-import ValidatorRules from "../validator-rules"
+import { ValidationError } from "#seedwork/domain/errors"
+import ValidatorRules from "#seedwork/domain/validators/validator-rules"
 
 type Values = {
   value: any,

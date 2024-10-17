@@ -1,4 +1,4 @@
-import ValueObject from "../value-object";
+import ValueObject from "#seedwork/domain/value-objects/value-object";
 
 class StubValueObject extends ValueObject { }
 

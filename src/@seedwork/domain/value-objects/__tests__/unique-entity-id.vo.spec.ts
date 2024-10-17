@@ -1,6 +1,6 @@
 import { validate as uuidValidate } from "uuid"
-import InvalidUuidError from "../../errors/invalid-uuid.error"
-import UniqueEntityId from "../unique-entity-id.vo"
+import InvalidUuidError from "#seedwork/domain/errors/invalid-uuid.error"
+import UniqueEntityId from "#seedwork/domain/value-objects/unique-entity-id.vo"
 
 describe('Unique entity id unit tests', () => {
 
