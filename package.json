@@ -230,7 +230,8 @@
   ],
   "devDependencies": {},
   "scripts": {
-    "start:dev": "npm run start:dev -w nestjs"
+    "prestart:dev": "npm run build -w codeflix-backend-app",
+    "start:dev": "npm run build:w -w codeflix-backend-app & npm run start:dev -w nestjs"
   },
   "keywords": [],
   "author": "",
