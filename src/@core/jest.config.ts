@@ -8,7 +8,10 @@ import type { Config } from 'jest';
 const config: Config = {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
-
+  displayName: {
+    name: '@core',
+    color: 'blue'
+  },
   // Stop running tests after `n` failures
   // bail: 0,
 
@@ -200,4 +203,4 @@ const config: Config = {
   // watchman: true,
 };
 
-export default config;
+export default config
