@@ -1,15 +1,24 @@
-import { Injectable } from '@nestjs/common';
-import { CreateCategoryDto } from './dto/create-category.dto';
+import { Inject, Injectable } from '@nestjs/common';
+import {
+	CreateCategoryUseCase,
+	ListCategoriesUseCase,
+} from 'codeflix-backend-app/category/application';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 
 @Injectable()
 export class CategoriesService {
-	create(createCategoryDto: CreateCategoryDto) {
-		return 'This action adds a new category';
+	@Inject(CreateCategoryUseCase.UseCase)
+	private readonly createUseCase: CreateCategoryUseCase.UseCase;
+
+	@Inject(ListCategoriesUseCase.UseCase)
+	private readonly listUseCase: ListCategoriesUseCase.UseCase;
+
+	create(createCategoryDto: CreateCategoryUseCase.Input) {
+		return this.createUseCase.execute(createCategoryDto);
 	}
 
-	findAll() {
-		//return `This action returns all categories`;
+	search(input: ListCategoriesUseCase.Input) {
+		return this.listUseCase.execute(input);
 	}
 
 	findOne(id: number) {
