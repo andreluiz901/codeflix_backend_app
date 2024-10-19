@@ -1,58 +1,62 @@
-import { Category } from "#category/domain/entities/category"
-import CategoryInMemoryRepository from "./category-in-memory.repository"
-
+import { Category } from '#category/domain/entities/category';
+import CategoryInMemoryRepository from './category-in-memory.repository';
 
 describe('CategoryInMemoryRepository', () => {
-  let repository: CategoryInMemoryRepository
+	let repository: CategoryInMemoryRepository;
 
-  beforeEach(() => repository = new CategoryInMemoryRepository())
+	beforeEach(() => (repository = new CategoryInMemoryRepository()));
 
-  it('should no filter items when filter object is null', async () => {
-    const items = [new Category({ name: 'test' })]
-    const filterSpy = jest.spyOn(items, 'filter' as any)
+	it('should no filter items when filter object is null', async () => {
+		const items = [new Category({ name: 'test' })];
+		const filterSpy = jest.spyOn(items, 'filter' as any);
 
-    let itemsFiltered = await repository['applyFilter'](items, null)
-    expect(filterSpy).not.toHaveBeenCalled()
-    expect(itemsFiltered).toStrictEqual(itemsFiltered)
-  })
+		const itemsFiltered = await repository['applyFilter'](items, null);
+		expect(filterSpy).not.toHaveBeenCalled();
+		expect(itemsFiltered).toStrictEqual(itemsFiltered);
+	});
 
-  it('should filter items using filter parameter', async () => {
-    const items = [
-      new Category({ name: 'test' }),
-      new Category({ name: 'TEST' }),
-      new Category({ name: 'fake' }),
-    ]
-    const filterSpy = jest.spyOn(items, 'filter' as any)
+	it('should filter items using filter parameter', async () => {
+		const items = [
+			new Category({ name: 'test' }),
+			new Category({ name: 'TEST' }),
+			new Category({ name: 'fake' }),
+		];
+		const filterSpy = jest.spyOn(items, 'filter' as any);
 
-    let itemsFiltered = await repository['applyFilter'](items, 'TEST')
-    expect(filterSpy).toHaveBeenCalledTimes(1)
-    expect(itemsFiltered).toStrictEqual([items[0], items[1]])
-  })
+		const itemsFiltered = await repository['applyFilter'](items, 'TEST');
+		expect(filterSpy).toHaveBeenCalledTimes(1);
+		expect(itemsFiltered).toStrictEqual([items[0], items[1]]);
+	});
 
-  it('should sort by createdAt when sort parameter is null', async () => {
-    const createdAt = new Date()
-    const items = [
-      new Category({ name: 'test', createdAt }),
-      new Category({ name: 'TEST', createdAt: new Date(createdAt.getTime() + 100) }),
-      new Category({ name: 'fake', createdAt: new Date(createdAt.getTime() + 200) }),
-    ]
+	it('should sort by createdAt when sort parameter is null', async () => {
+		const createdAt = new Date();
+		const items = [
+			new Category({ name: 'test', createdAt }),
+			new Category({
+				name: 'TEST',
+				createdAt: new Date(createdAt.getTime() + 100),
+			}),
+			new Category({
+				name: 'fake',
+				createdAt: new Date(createdAt.getTime() + 200),
+			}),
+		];
 
-    let itemsSorted = await repository['applySort'](items, null, null)
-    expect(itemsSorted).toStrictEqual([items[2], items[1], items[0]])
-  })
+		const itemsSorted = await repository['applySort'](items, null, null);
+		expect(itemsSorted).toStrictEqual([items[2], items[1], items[0]]);
+	});
 
-  it('should sort by name', async () => {
-    const items = [
-      new Category({ name: 'c', }),
-      new Category({ name: 'b', }),
-      new Category({ name: 'a', }),
-    ]
+	it('should sort by name', async () => {
+		const items = [
+			new Category({ name: 'c' }),
+			new Category({ name: 'b' }),
+			new Category({ name: 'a' }),
+		];
 
-    let itemsSorted = await repository['applySort'](items, 'name', 'asc')
-    expect(itemsSorted).toStrictEqual([items[2], items[1], items[0]])
+		let itemsSorted = await repository['applySort'](items, 'name', 'asc');
+		expect(itemsSorted).toStrictEqual([items[2], items[1], items[0]]);
 
-    itemsSorted = await repository['applySort'](items, 'name', 'desc')
-    expect(itemsSorted).toStrictEqual([items[0], items[1], items[2]])
-  })
-
-})
+		itemsSorted = await repository['applySort'](items, 'name', 'desc');
+		expect(itemsSorted).toStrictEqual([items[0], items[1], items[2]]);
+	});
+});

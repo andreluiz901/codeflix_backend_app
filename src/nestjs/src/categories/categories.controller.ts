@@ -6,16 +6,16 @@ import {
 	Param,
 	Patch,
 	Post,
-} from "@nestjs/common";
+} from '@nestjs/common';
 import {
 	CreateCategoryUseCase,
 	ListCategoriesUseCase,
-} from "codeflix-backend-app/category/application";
-import { CategoriesService } from "./categories.service";
-import { CreateCategoryDto } from "./dto/create-category.dto";
-import { UpdateCategoryDto } from "./dto/update-category.dto";
+} from 'codeflix-backend-app/category/application';
+import { CategoriesService } from './categories.service';
+import { CreateCategoryDto } from './dto/create-category.dto';
+import { UpdateCategoryDto } from './dto/update-category.dto';
 
-@Controller("categories")
+@Controller('categories')
 export class CategoriesController {
 	constructor(
 		private readonly categoriesService: CategoriesService,
@@ -25,7 +25,7 @@ export class CategoriesController {
 
 	@Post()
 	create(@Body() createCategoryDto: CreateCategoryDto) {
-		return this.createUseCase.execute({ name: "teste" });
+		return this.createUseCase.execute({ name: 'teste' });
 		//return this.categoriesService.create(createCategoryDto);
 	}
 
@@ -35,21 +35,21 @@ export class CategoriesController {
 		// return this.categoriesService.findAll();
 	}
 
-	@Get(":id")
-	findOne(@Param("id") id: string) {
+	@Get(':id')
+	findOne(@Param('id') id: string) {
 		return this.categoriesService.findOne(+id);
 	}
 
-	@Patch(":id")
+	@Patch(':id')
 	update(
-		@Param("id") id: string,
+		@Param('id') id: string,
 		@Body() updateCategoryDto: UpdateCategoryDto,
 	) {
 		return this.categoriesService.update(+id, updateCategoryDto);
 	}
 
-	@Delete(":id")
-	remove(@Param("id") id: string) {
+	@Delete(':id')
+	remove(@Param('id') id: string) {
 		return this.categoriesService.remove(+id);
 	}
 }

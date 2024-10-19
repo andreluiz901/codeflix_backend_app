@@ -7,7 +7,20 @@
 	},
 	"files": {
 		"ignoreUnknown": false,
-		"ignore": ["node_modules"]
+		"ignore": [
+			"node_modules",
+			"dist",
+			"__coverage",
+			".devconteiner",
+			".docker",
+			"package-lock.json",
+			"package.json",
+			"jest.config.json",
+			"tsconfig.json",
+			"*.sh",
+			".swcrc",
+			".gitignore"
+		]
 	},
 	"formatter": {
 		"enabled": true,
@@ -20,7 +33,13 @@
 		"enabled": true,
 		"rules": {
 			"recommended": true,
-			"style": { "useImportType": "off" }
+			"style": { "useImportType": "off" },
+			"complexity": {
+				"noForEach": "off",
+				"useLiteralKeys": "off",
+				"noStaticOnlyClass": "off"
+			},
+			"suspicious": { "noAssignInExpressions": "off", "noExplicitAny": "off" }
 		}
 	},
 	"javascript": {
@@ -28,7 +47,7 @@
 			"unsafeParameterDecoratorsEnabled": true
 		},
 		"formatter": {
-			"quoteStyle": "double"
+			"quoteStyle": "single"
 		}
 	}
 }

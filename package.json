@@ -234,7 +234,8 @@
   "scripts": {
     "prestart:dev": "npm run build -w codeflix-backend-app",
     "start:dev": "npm run build:w -w codeflix-backend-app & npm run start:dev -w nestjs",
-    "test": "jest"
+    "test": "jest",
+    "check": "biome check ."
   },
   "keywords": [],
   "author": "",
