@@ -228,7 +228,9 @@
     "./src/@core",
     "./src/nestjs"
   ],
-  "devDependencies": {},
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4"
+  },
   "scripts": {
     "prestart:dev": "npm run build -w codeflix-backend-app",
     "start:dev": "npm run build:w -w codeflix-backend-app & npm run start:dev -w nestjs",
