@@ -24,19 +24,19 @@ import { UpdateCategoryDto } from './dto/update-category.dto';
 @Controller('categories')
 export class CategoriesController {
 	@Inject(CreateCategoryUseCase.UseCase)
-	private readonly createUseCase: CreateCategoryUseCase.UseCase;
+	private createUseCase: CreateCategoryUseCase.UseCase;
 
 	@Inject(UpdateCategoryUseCase.UseCase)
-	private readonly updateUseCase: UpdateCategoryUseCase.UseCase;
+	private updateUseCase: UpdateCategoryUseCase.UseCase;
 
 	@Inject(DeleteCategoryUseCase.UseCase)
-	private readonly deleteUseCase: DeleteCategoryUseCase.UseCase;
+	private deleteUseCase: DeleteCategoryUseCase.UseCase;
 
 	@Inject(GetCategoryUseCase.UseCase)
-	private readonly getUseCase: GetCategoryUseCase.UseCase;
+	private getUseCase: GetCategoryUseCase.UseCase;
 
 	@Inject(ListCategoriesUseCase.UseCase)
-	private readonly listUseCase: ListCategoriesUseCase.UseCase;
+	private listUseCase: ListCategoriesUseCase.UseCase;
 
 	@Post()
 	create(@Body() createCategoryDto: CreateCategoryDto) {
