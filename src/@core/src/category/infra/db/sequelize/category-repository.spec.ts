@@ -6,14 +6,13 @@ import { CategoryModelMapper } from './category-mapper';
 import { CategoryModel } from './category-model';
 import { CategorySequelizeRepository } from './category-repository';
 
+const chance = _chance();
+
 describe('CategorySequelizeRepository unit Test', () => {
 	SetupSequelize({ models: [CategoryModel] });
-	let chance: Chance.Chance;
 	let repository: CategorySequelizeRepository;
 
-	beforeAll(() => {
-		chance = _chance();
-	});
+	beforeAll(() => {});
 
 	beforeEach(async () => {
 		repository = new CategorySequelizeRepository(CategoryModel);
@@ -319,5 +318,73 @@ describe('CategorySequelizeRepository unit Test', () => {
 				expect(result.toJSON(true)).toMatchObject(i.result.toJSON(true));
 			}
 		});
+	});
+
+	describe('should search using filter, sort and paginated', () => {
+		const defaultProps = {
+			description: null,
+			isActive: true,
+			createdAt: new Date(),
+		};
+
+		const categoriesProps = [
+			{ id: chance.guid({ version: 4 }), name: 'test', ...defaultProps },
+			{ id: chance.guid({ version: 4 }), name: 'a', ...defaultProps },
+			{ id: chance.guid({ version: 4 }), name: 'TEST', ...defaultProps },
+			{ id: chance.guid({ version: 4 }), name: 'e', ...defaultProps },
+			{ id: chance.guid({ version: 4 }), name: 'TeSt', ...defaultProps },
+		];
+
+		const arrange = [
+			{
+				searchParams: new CategoryRepository.SearchParams({
+					page: 1,
+					perPage: 2,
+					sort: 'name',
+					filter: 'TEST',
+				}),
+				searchResult: new CategoryRepository.SearchResult({
+					items: [
+						new Category(categoriesProps[2]),
+						new Category(categoriesProps[4]),
+					],
+					total: 3,
+					currentPage: 1,
+					perPage: 2,
+					sort: 'name',
+					sortDir: 'asc',
+					filter: 'TEST',
+				}),
+			},
+			{
+				searchParams: new CategoryRepository.SearchParams({
+					page: 2,
+					perPage: 2,
+					sort: 'name',
+					filter: 'TEST',
+				}),
+				searchResult: new CategoryRepository.SearchResult({
+					items: [new Category(categoriesProps[0])],
+					total: 3,
+					currentPage: 2,
+					perPage: 2,
+					sort: 'name',
+					sortDir: 'asc',
+					filter: 'TEST',
+				}),
+			},
+		];
+
+		beforeEach(async () => {
+			const categories = await CategoryModel.bulkCreate(categoriesProps); //NOSONAR - this is read on test.each
+		});
+
+		test.each(arrange)(
+			'when value is $searcParams %j',
+			async ({ searchParams, searchResult }) => {
+				const result = await repository.search(searchParams);
+				expect(result.toJSON(true)).toMatchObject(searchResult.toJSON(true));
+			},
+		);
 	});
 });
