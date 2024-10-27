@@ -2,15 +2,18 @@ import _chance from 'chance';
 import { Category, CategoryRepository } from '#category/domain';
 import { NotFoundError, UniqueEntityId } from '#seedwork/domain';
 import { SetupSequelize } from '#seedwork/infra/testing/helpers/db';
-import { CategoryModelMapper } from './category-mapper';
-import { CategoryModel } from './category-model';
-import { CategorySequelizeRepository } from './category-repository';
+import { CategorySequelize } from './category-sequelize';
 
+const {
+	CategoryModel,
+	CategoryModelMapper,
+	CategoryRepository: CategorySequelizeRepository,
+} = CategorySequelize;
 const chance = _chance();
 
 describe('CategorySequelizeRepository unit Test', () => {
 	SetupSequelize({ models: [CategoryModel] });
-	let repository: CategorySequelizeRepository;
+	let repository: CategorySequelize.CategoryRepository;
 
 	beforeAll(() => {});
 

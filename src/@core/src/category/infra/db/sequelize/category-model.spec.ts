@@ -1,6 +1,8 @@
 import { DataType } from 'sequelize-typescript';
 import { SetupSequelize } from '#seedwork/infra/testing/helpers/db';
-import { CategoryModel } from './category-model';
+import { CategorySequelize } from './category-sequelize';
+
+const { CategoryModel } = CategorySequelize;
 
 describe('CategoryModel unit test', () => {
 	SetupSequelize({ models: [CategoryModel] });
