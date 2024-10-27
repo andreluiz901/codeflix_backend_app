@@ -362,8 +362,6 @@ describe('CategorySequelizeRepository unit Test', () => {
 
 			for (const i of arrange) {
 				const result = await repository.search(i.params);
-				console.log('result', result);
-				console.log('i-result', i.result);
 				expect(result.toJSON(true)).toMatchObject(i.result.toJSON(true));
 			}
 		});

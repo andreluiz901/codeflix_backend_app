@@ -8,8 +8,6 @@ export class AppController {
 
 	@Get()
 	getHello(): string {
-		console.log(CreateCategoryUseCase);
-		console.log('teste');
 		return this.appService.getHello();
 	}
 }
