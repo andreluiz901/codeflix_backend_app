@@ -69,6 +69,7 @@
     "@types/uuid": "^10.0.0",
     "chance": "^1.1.12",
     "class-validator": "^0.14.1",
+    "dotenv": "^16.4.5",
     "sequelize": "^6.37.4",
     "sequelize-typescript": "^2.1.6",
     "sqlite3": "^5.1.7",
