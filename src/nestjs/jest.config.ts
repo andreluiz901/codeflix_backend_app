@@ -16,4 +16,8 @@ export default {
 		'codeflix-backend-app/(.*)$':
 			'<rootDir>../../../node_modules/codeflix-backend-app/dist/$1',
 	},
+	setupFilesAfterEnv: [
+		'../../@core/src/@seedwork/domain/tests/validations.ts',
+		'../../@core/src/@seedwork/domain/tests/jest.ts',
+	],
 };

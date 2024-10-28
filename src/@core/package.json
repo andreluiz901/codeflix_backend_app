@@ -48,7 +48,7 @@
     "test:cov": "npm run test -- --coverage",
     "test:inBand": "npm run test -- --runInBand",
     "cti": "cti",
-    "cti:@core": "sh ./cti.sh"
+    "cti:make": "sh ./cti.sh"
   },
   "keywords": [],
   "author": "André Luiz",

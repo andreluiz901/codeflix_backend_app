@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ ! -f "./src/@core/env.testing"]; then
-  cp ./src/@core/env.example ./src/@core/env.testing
+if [ ! -f "./src/@core/.env.test"]; then
+  cp ./src/@core/.env.test.example ./src/@core/.env.test
 fi
 
 echo "INSTALLING DEPENDENCIES"

@@ -37,7 +37,8 @@
 			"complexity": {
 				"noForEach": "off",
 				"useLiteralKeys": "off",
-				"noStaticOnlyClass": "off"
+				"noStaticOnlyClass": "off",
+				"noThisInStatic": "off"
 			},
 			"suspicious": { "noAssignInExpressions": "off", "noExplicitAny": "off" }
 		}
