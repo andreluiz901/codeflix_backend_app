@@ -1,4 +1,4 @@
-import { ValidationError } from '#seedwork/domain/errors';
+import { ValidationError } from '#seedwork/domain';
 
 export class ValidatorRules {
 	private constructor(
