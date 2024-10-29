@@ -1,5 +1,5 @@
 import CategoryValidatorFactory from '#category/domain/validators/category.validator';
-import Entity from '#seedwork/domain/entity/entity';
+import {Entity} from '#seedwork/domain/entity/entity';
 import { EntityValidationError } from '#seedwork/domain/errors/validation-error';
 import UniqueEntityId from '#seedwork/domain/value-objects/unique-entity-id.vo';
 

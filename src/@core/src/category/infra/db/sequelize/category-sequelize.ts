@@ -8,8 +8,11 @@ import {
 } from 'sequelize-typescript';
 import {
 	Category,
-	CategoryRepository as CategoryRepositoryContract,
-} from '#category/domain';
+} from '#category/domain/entities/category';
+import {
+	CategoryRepository as CategoryRepositoryContract
+} from '#category/domain/repository/category.repository';
+
 import {
 	EntityValidationError,
 	LoadEntityError,
@@ -76,7 +79,7 @@ export namespace CategorySequelize {
 
 			const { rows: models, count } = await this.categoryModel.findAndCountAll({
 				...(props.filter && {
-					where: { name: { [Op.like]: `${props.filter}` } },
+					where: { name: { [Op.like]: `%${props.filter}%` } },
 				}),
 				...(props.sort && this.sortableFields.includes(props.sort)
 					? { order: [[props.sort, props.sortDir]] }

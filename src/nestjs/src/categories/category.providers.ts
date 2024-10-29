@@ -1,3 +1,4 @@
+import { getModelToken } from '@nestjs/sequelize';
 import {
 	CreateCategoryUseCase,
 	DeleteCategoryUseCase,
@@ -20,7 +21,10 @@ export namespace CATEGORY_PROVIDERS {
 
 		export const CATEGORY_SEQUELIZE_REPOSITORY = {
 			provide: 'CategorySequelizeRepository',
-			useClass: CategorySequelize.CategoryRepository,
+			useFactory: (categoryModel: typeof CategorySequelize.CategoryModel) => {
+				return new CategorySequelize.CategoryRepository(categoryModel)
+			},
+			inject: [getModelToken(CategorySequelize.CategoryModel)]
 		};
 
 		export const CATEGORY_REPOSITORY = {
