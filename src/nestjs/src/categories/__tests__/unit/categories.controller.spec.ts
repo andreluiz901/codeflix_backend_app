@@ -5,9 +5,9 @@ import {
 	ListCategoriesUseCase,
 	UpdateCategoryUseCase,
 } from 'codeflix-backend-app/category/application';
-import { CategoriesController } from './categories.controller';
-import { CreateCategoryDto } from './dto/create-category.dto';
-import { UpdateCategoryDto } from './dto/update-category.dto';
+import { CategoriesController } from '../../categories.controller';
+import { CreateCategoryDto } from '../../dto/create-category.dto';
+import { UpdateCategoryDto } from '../../dto/update-category.dto';
 
 describe('CategoriesController Unit Tests', () => {
 	let controller: CategoriesController;
